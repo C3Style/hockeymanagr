@@ -95,6 +95,7 @@ export class AppComponent implements OnInit {
   }
 
   ngOnInit() {
+	  /*
     this.service.getPlayers().subscribe(
       data => {
         this.players = data;
@@ -124,6 +125,7 @@ export class AppComponent implements OnInit {
         );
       }
     ); 
+	*/
   }
 
   getStat(player: Player) {
