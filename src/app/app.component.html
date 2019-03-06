@@ -1,0 +1,39 @@
+<mat-progress-bar mode="query" *ngIf="isLoading"></mat-progress-bar>
+
+<div class="example-button-row">
+    <button mat-raised-button color="primary" (click)="saveStat()">Mémoriser les statistiques</button>
+</div>
+
+<div>
+    <div style="display: block">
+        <canvas baseChart width="400" height="400"
+                    [datasets]="lineChartData"
+                    [labels]="lineChartLabels"
+                    [options]="lineChartOptions"
+                    [colors]="lineChartColors"
+                    [legend]="lineChartLegend"
+                    [chartType]="lineChartType"
+                    (chartHover)="chartHovered($event)"
+                    (chartClick)="chartClicked($event)">
+      </canvas>
+    </div>
+  </div>
+
+<mat-card *ngFor="let player of players; let i = index" class="card" (click)="getStat(player)">
+    <mat-card-header>
+      <img mat-card-avatar class="header-image" src="assets/images/{{player.Club}}.png"/>
+      <!--<img mat-card-avatar class="header-image" src=""/> -->
+      <mat-card-title>{{i+1}}. {{player.FirstName}} {{player.LastName}}</mat-card-title>
+      <mat-card-subtitle>{{player.Role}} - {{player.Presence}} présence(s)</mat-card-subtitle>
+      <div class="score">
+          <i class="fa fa-usd"></i>&nbsp; {{player.Price}}<br/>
+          <i class="fa fa-signal"></i>&nbsp; {{player.getRatio()}}
+      </div>
+      <div class="score">
+            <i class="fa fa-plus"></i>&nbsp; {{player.getVariation()}}
+        </div>
+    </mat-card-header>
+</mat-card>
+
+<div class="myDiv">Total cost : {{totalTeamCost}}</div>
+

@@ -1,0 +1,8 @@
+{
+    "/api/*": {
+       "target": "https://hockeymanager.ch",
+       "secure": false,
+       "changeOrigin": true,
+       "logLevel": "debug"
+    }
+  }
