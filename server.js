@@ -2,17 +2,17 @@
 const express = require('express');
 const path = require('path');
 const request = require('request');
-// const cors = require('cors');
-
 const app = express();
-
-// Enable CORS
-// app.use(cors());
 
 process.env.NODE_TLS_REJECT_UNAUTHORIZED = "0";
 
 app.get('/api/*', function(req,res) {
 	var newurl = 'https://hockeymanager.ch' + req.url;
+	request(newurl).pipe(res);
+});
+
+app.get('/HockeyManager/*', function(req,res) {
+	var newurl = 'https://www.c3style.ch/' + req.url;
 	request(newurl).pipe(res);
 });
 

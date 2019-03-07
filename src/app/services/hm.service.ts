@@ -63,7 +63,7 @@ export class HMService {
 
   saveStat(data : Player[]): any {
     const headers = new HttpHeaders({ 'Content-Type': 'application/x-www-form-urlencoded' });
-    return this.http.post('http://localhost:8080/HockeyManager/save.php',data,{ headers: headers })
+    return this.http.post('/HockeyManager/save.php',data,{ headers: headers })
       .pipe(
         map(data => data),
         catchError(this.handleError('saveStat', []))
@@ -72,7 +72,7 @@ export class HMService {
 
   getStat(): any {
     const headers = new HttpHeaders({ 'Content-Type': 'application/x-www-form-urlencoded' });
-    return this.http.get('http://localhost:8080/HockeyManager/getData.php')
+    return this.http.get('/HockeyManager/getData.php')
       .pipe(
         map(data => data),
         catchError(this.handleError('getStat', []))
