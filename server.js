@@ -19,7 +19,17 @@ app.post('/HockeyManager/*', function(req,res) {
 */
 
 app.post('/HockeyManager/*', function(req,res) {
-    request({ url: 'https://www.c3style.ch/' + req.url, headers: req.headers, body: req.body }, function(err, remoteResponse, remoteBody) {}).pipe(res);
+    request(
+		{ 
+			url: 'https://www.c3style.ch/' + req.url, 
+			headers: {'content-type' : 'application/x-www-form-urlencoded'}, 
+			body: req.body 
+		}, 
+		function(err, remoteResponse, remoteBody) 
+		{ 
+			console.log(remoteBody); 
+		}
+	).pipe(res);
 });
 
 // Serve only the static files form the dist directory
