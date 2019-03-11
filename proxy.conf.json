@@ -4,5 +4,11 @@
        "secure": false,
        "changeOrigin": true,
        "logLevel": "debug"
+    },
+	"/HockeyManager/*": {
+       "target": "http://www.c3style.ch",
+       "secure": false,
+       "changeOrigin": true,
+       "logLevel": "debug"
     }
   }
