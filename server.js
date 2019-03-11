@@ -11,7 +11,7 @@ app.get('/api/*', function(req,res) {
 	request(newurl).pipe(res);
 });
 
-app.get('/HockeyManager/*', function(req,res) {
+app.post('/HockeyManager/*', function(req,res) {
 	var newurl = 'https://www.c3style.ch/' + req.url;
 	request(newurl).pipe(res);
 });
