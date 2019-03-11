@@ -22,8 +22,8 @@ app.post('/HockeyManager/*', function(req,res) {
     request(
 		{ 
 			url: 'https://www.c3style.ch/' + req.url, 
-			headers: {'content-type' : 'application/x-www-form-urlencoded'}, 
-			body: req.body 
+			headers: req.headers
+			// body: req.body 
 		}, 
 		function(err, remoteResponse, remoteBody) 
 		{ 
