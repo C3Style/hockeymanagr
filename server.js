@@ -11,47 +11,16 @@ app.get('/api/*', function(req,res) {
 	request(newurl).pipe(res);
 });
 
-/*
-app.post('/HockeyManager/*', function(req,res) {
+app.get('/HockeyManager/*', function(req,res) {
 	var newurl = 'https://www.c3style.ch/' + req.url;
 	request(newurl).pipe(res);
 });
-*/
 
-app.post('/HockeyManager/*', function(req,res) {
-	
-	var arr = [{
-        Id : 10,
-        FirstName: "123",
-		LastName: "123",
-		Role: "123",
-		Club: "123",
-		Price: "123",
-		Points: "123",
-		Presence: "123",
-    }];
-	
-    request(
-		{ 
-			url: 'https://www.c3style.ch/' + req.url, 
-			headers: req.headers
-			body: req.body 
-			
-			headers: {
-				'Content-Type':'application/json;charset=UTF-8',
-				'Accept-Encoding':'gzip, deflate',
-				'X-Requested-With': 'XMLHttpRequest',
-				'Accept':'application/json, text/plain, */*',
-				'User-Agent': 'UserAgent' 
-			},
-			json: true,
-			body: arr
-		}, 
-		function(err, remoteResponse, remoteBody) 
-		{ 
-			console.log(remoteBody); 
-		}
-	).pipe(res);
+app.post('/HockeyManager/*', function(req,res) {	
+    var url = 'https://www.c3style.ch/' + req.url;
+    req.pipe(request.post(url, {
+        form: req.body
+    }), { end : false }).pipe(res);
 });
 
 // Serve only the static files form the dist directory
